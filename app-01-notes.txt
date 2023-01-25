@@ -1,0 +1,57 @@
+Write Your First React App: Hello World!
+
+/*
+    The first thing we'll do is get a project set up and put some text on the screen. You'll also learn how JSX is similar to HTML, and how to render dynamic context.
+
+    Before you begin, make sure you have Node and NPM installed (Yarn works too, if you have it). We'll be using the create-react-app command to create our app. Since you'll be creating a lot of apps throughout this workshop, I suggest installing the command on your system with npm install -g create-react-app.
+*/
+
+rm src/* -> removes everything in src after create-react-app is complete.
+
+import React from 'react' -> importing react from react package
+
+import ReactDOM from 'react-dom' -> importing reactDom from react dom package. Allows us to render the app to our page
+
+ReactDOM.render() -> takes 2 arguments: something to render, where to render it to
+
+The app that create-react-app gives us comes with an index.html file and one of the elements inside the body tag is a div with the id=root
+
+This is where our react app is going to live (inside root)
+
+React uses JSX which is similar to html
+
+React Components have to start with a capital letter
+    -   We can only return a SINGLE PARENT ELEMENT TAG from a Component
+    -   JSX accepts any valid HTML for the most part
+    -   IF we want multiple outer tags then we can use a FRAGMENT as the outer wrapper
+
+What JSX does that HTML can't do is that it allows dynamic content
+    -   We can use {} around variables/function calls/JavaScript expressions to add dynamic content
+
+The JSX that we write inside of our React app actually gets compiled into a JavaScript function call.
+
+We can use the Elements tab (in devtools) to drill into our elements on the browser. React is rendered on HTML that matches our JSX.
+
+-------------------------------------------------------------------------------
+
+How JSX Compiles to Plain JavaScript
+
+/*
+    The HTML-looking syntax that React uses is called "JSX" and it's actually compiled to plain JavaScript function calls before the browser ever sees the code. In this lesson we'll demystify JSX, learn how React.createElement works, and take a look at how the behind-the-scenes compiled version of a React app.
+*/
+
+If we wanted to return this JSX section manually instead then we would do something like React.createElement('div') and create a div. We can manually build up our JSX this way since this is what our JSX is compiled to in the end.
+
+createElement() takes the element to create and the second argument is the props we're passing into that element. If there are no props to pass in then we could pass an empty object or we could pass null. All the remaining arguments are the children of that div
+    -   This div has 3 children. We're going to write the H1, which is going to be another React create element. After the H1 is going to be the word hello with the space after it. After that, there's going to be the strong tag with the name in it. (different from video since making our own)
+
+    -    That would be another React create element. We'll create a strong tag and now it's filling the children for this two. The strong doesn't have any props and the value inside it is just the expression name. We can just put the name directly here and inside the H1, again, there's no props. The content is the string.
+
+    -   This is actually the JavaScript that's running in the browser when you write JSX like this. We can prove that if we go over to the sources tab and click on this bundle.js/main.js file. This is the compiled JavaScript that came from our bundled React app.
+        -   This big long string (right after return) is what webpack is calling React. Where we'd call capital React, that's this thing here. There is this .a. It's calling createElement. You can see it's turned JSX into createElement div. Inside that, that's an h1 with some text. It's got that string hello again. The last thing is the strong tag. It's rendering out the name.
+
+One more thing we could try is to render out a custom component. If we make a new component function and call it custom, and maybe this one just returns a span, says custom. Now if we render custom inside our Hello World component, we'll see it appears here. We can do the same thing with createElement by adding one more argument after the strong tag.
+
+This time, instead of passing a string, we're going to pass this custom function itself. There's no props, and there's no children. We can just leave it like this. If we save now, we'll see we get the same result.
+
+To recap, our JSX gets compiled into React.createElement function calls and createElement can create regular html elements by passing a string like div. They can also render out custom components like this one by passing the function itself into React.createElement.

@@ -1,0 +1,29 @@
+Differences Between JSX and HTML
+
+/*
+    Although JSX looks a lot like HTML, it has a few key differences. In this lesson we'll see some of the features and syntax that set JSX apart from HTML, and learn to avoid a few "gotchas" that might trip you up.
+*/
+
+class --> needs to be className in JSX
+
+event handlers need to be camelCase
+
+For inputs we normally (HTML) would do something like this if you want to associate a label with an input:
+    <label for="email">Email</label>
+    <input id="email" />
+In REACT we would need to do:
+    <label htmlFor="email">Email</label>
+    <input id="email" />
+
+In JSX EVERY tag needs to be closed </ > no self closing < > in JSX
+
+In JSX every tag can be self-closing. If you want an empty/childless div you can just do <div/> instead of writing it out longhand like <div></div>
+
+single line comments {/* single line JSX comment */}
+
+multi-line comments 
+    {
+        // 
+    }
+
+Be sure to always keep an eye on the console and fix any visible warnings
